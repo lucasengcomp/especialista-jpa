@@ -5,7 +5,7 @@ import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class IniciandoComJpa extends EntityManagerTest {
+public class ConsultandoRegistrosTest extends EntityManagerTest {
 
     @Test
     public void buscarPorIdentificador() {
