@@ -10,6 +10,19 @@ import java.math.BigDecimal;
 public class OperacaoComTransacaoTest extends EntityManagerTest {
 
     @Test
+    public void atualizarObjetoGerenciado() {
+        Produto produto = entityManager.find(Produto.class, 1);
+
+        entityManager.getTransaction().begin();
+        produto.setNome("Kindle paperwhite 2º geração");
+        entityManager.getTransaction().commit();
+        entityManager.clear();
+
+        Produto produtoVerficacao = entityManager.find(Produto.class, produto.getId());
+        Assert.assertEquals("Kindle paperwhite 2º geração", produtoVerficacao.getNome());
+    }
+
+    @Test
     public void atualizarObjeto() {
         Produto produto = new Produto();
         produto.setId(1);
