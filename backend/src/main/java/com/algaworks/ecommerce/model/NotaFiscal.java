@@ -1,18 +1,18 @@
 package com.algaworks.ecommerce.model;
 
-import com.algaworks.ecommerce.model.enums.SexoCliente;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Cliente {
+public class NotaFiscal {
 
     @EqualsAndHashCode.Include
     @Id
@@ -20,5 +20,9 @@ public class Cliente {
 
     private String nome;
 
-    private SexoCliente sexoCliente;
+    private Integer pedidoId;
+
+    private String xml;
+
+    private Date dataEmissao;
 }

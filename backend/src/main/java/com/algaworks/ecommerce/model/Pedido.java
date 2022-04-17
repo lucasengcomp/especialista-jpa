@@ -1,24 +1,32 @@
 package com.algaworks.ecommerce.model;
 
-import com.algaworks.ecommerce.model.enums.SexoCliente;
+import com.algaworks.ecommerce.model.enums.StatusPedido;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Cliente {
+public class Pedido {
 
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
 
-    private String nome;
+    private LocalDateTime dataPedido;
 
-    private SexoCliente sexoCliente;
+    private LocalDateTime dataConclusao;
+
+    private Integer notaFiscalId;
+
+    private BigDecimal total;
+
+    private StatusPedido status;
 }
