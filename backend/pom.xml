@@ -41,8 +41,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
                 <configuration>
-                    <source>12</source>
-                    <targe>12</targe>
+                    <source>11</source>
+                    <targe>11</targe>
                 </configuration>
             </plugin>
         </plugins>
