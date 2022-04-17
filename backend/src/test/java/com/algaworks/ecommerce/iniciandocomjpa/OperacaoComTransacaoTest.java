@@ -10,6 +10,24 @@ import java.math.BigDecimal;
 public class OperacaoComTransacaoTest extends EntityManagerTest {
 
     @Test
+    public void inserirObjetoComMerge() {
+        Produto produto = new Produto();
+
+        produto.setId(2);
+        produto.setNome("Microfone Rode Videmic");
+        produto.setDescricao("A qualidade de som");
+        produto.setPreco(new BigDecimal(1000));
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(produto);
+        entityManager.getTransaction().commit();
+        entityManager.clear();
+
+        Produto produtoVerficacao = entityManager.find(Produto.class, produto.getId());
+        Assert.assertNotNull(produtoVerficacao);
+    }
+
+    @Test
     public void atualizarObjetoGerenciado() {
         Produto produto = entityManager.find(Produto.class, 1);
 
