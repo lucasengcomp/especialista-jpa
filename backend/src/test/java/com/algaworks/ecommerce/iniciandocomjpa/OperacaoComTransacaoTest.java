@@ -20,7 +20,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
         entityManager.clear();
 
         Produto produtoVerficacao = entityManager.find(Produto.class, produto.getId());
-        Assert.assertEquals("Kindle paperwhite 2º geração", produtoVerficacao.getNome());
+        Assert.assertEquals("Kindle paperwhite", produtoVerficacao.getNome());
     }
 
     @Test
