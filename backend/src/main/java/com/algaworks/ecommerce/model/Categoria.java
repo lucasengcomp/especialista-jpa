@@ -15,7 +15,8 @@ public class Categoria {
 
     @EqualsAndHashCode.Include
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "seq")
+    @SequenceGenerator(name = "seq", sequenceName = "sequencia_chave_primaria")
     private Integer id;
 
     private String nome;
