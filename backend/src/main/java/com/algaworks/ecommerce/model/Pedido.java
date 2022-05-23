@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.model.embededs.EnderecoEntregaPedido;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -33,4 +34,7 @@ public class Pedido {
 
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
+
+    @Embedded
+    private EnderecoEntregaPedido endereco;
 }
