@@ -22,7 +22,7 @@ public class MapeamentoObjetoEmbutido extends EntityManagerTest {
         endereco.setEstado("Goiás");
 
         Pedido pedido = new Pedido();
-        pedido.setId(1);
+//        pedido.setId(1);
         pedido.setDataPedido(LocalDateTime.now());
         pedido.setTotal(new BigDecimal(1000));
 
