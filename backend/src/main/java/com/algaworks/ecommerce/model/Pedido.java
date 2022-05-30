@@ -28,7 +28,7 @@ public class Pedido {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido")
-    List<ItemPedido> pedidos;
+    List<ItemPedido> itemsPedidos;
 
     @Column(name = "data_pedido")
     private LocalDateTime dataPedido;
