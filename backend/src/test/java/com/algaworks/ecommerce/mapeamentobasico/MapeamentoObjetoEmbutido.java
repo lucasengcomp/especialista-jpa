@@ -35,6 +35,5 @@ public class MapeamentoObjetoEmbutido extends EntityManagerTest {
         Assert.assertNotNull(pedidoVerificacao);
         Assert.assertNotNull(pedidoVerificacao.getId());
         Assert.assertNotNull(pedidoVerificacao.getEndereco().getCep());
-
     }
 }
