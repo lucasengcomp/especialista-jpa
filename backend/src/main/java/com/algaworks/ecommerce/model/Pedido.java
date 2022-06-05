@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -30,8 +31,11 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido")
     List<ItemPedido> itemsPedidos;
 
-    @Column(name = "data_pedido")
-    private LocalDateTime dataPedido;
+    @Column(name = "data_criacao")
+    private LocalDateTime dataCriacao;
+
+    @Column(name = "data_ultima_atualizacao")
+    private LocalDateTime dataUltimaAtualizacao;
 
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
@@ -49,4 +53,40 @@ public class Pedido {
 
     @Embedded
     private EnderecoEntregaPedido endereco;
+
+    @PrePersist
+    public void aoPersistir() {
+        dataCriacao = LocalDateTime.now();
+        calcularTotal();
+    }
+
+    //@PrePersist
+    //@PreUpdate
+    public void calcularTotal() {
+        if (itemsPedidos != null) {
+            total = itemsPedidos.stream().map(ItemPedido::getPrecoProduto)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+        }
+    }
+    @PreUpdate
+    public void aoAtualizar() {
+        dataUltimaAtualizacao = LocalDateTime.now();
+        calcularTotal();
+    }
+
+    @PostPersist
+    public void aposAtualizar() {
+        System.out.println("Após atualizar o pedido");
+        calcularTotal();
+    }
+
+    @PostRemove
+    public void aposRemover() {
+        System.out.println("Após remover o pedido");
+    }
+
+    @PostLoad
+    public void aposCarregar() {
+        System.out.println("Após carregar o pedido");
+    }
 }
