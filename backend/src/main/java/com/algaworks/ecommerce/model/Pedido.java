@@ -1,5 +1,7 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.listener.GenericoListener;
+import com.algaworks.ecommerce.listener.GerarNotaFiscalListener;
 import com.algaworks.ecommerce.model.embededs.EnderecoEntregaPedido;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import lombok.EqualsAndHashCode;
@@ -8,13 +10,13 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EntityListeners({GerarNotaFiscalListener.class, GenericoListener.class})
 @Entity
 @Table(name = "pedido")
 public class Pedido {
@@ -29,7 +31,7 @@ public class Pedido {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido")
-    List<ItemPedido> itemsPedidos;
+    private List<ItemPedido> itemsPedidos;
 
     @Column(name = "data_criacao")
     private LocalDateTime dataCriacao;
@@ -52,12 +54,10 @@ public class Pedido {
     private PagamentoCartao pagamentoCartao;
 
     @Embedded
-    private EnderecoEntregaPedido endereco;
+    private EnderecoEntregaPedido enderecoEntrega;
 
-    @PrePersist
-    public void aoPersistir() {
-        dataCriacao = LocalDateTime.now();
-        calcularTotal();
+    public boolean isPago() {
+        return StatusPedido.PAGO.equals(status);
     }
 
     //@PrePersist
@@ -68,6 +68,13 @@ public class Pedido {
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
         }
     }
+
+    @PrePersist
+    public void aoPersistir() {
+        dataCriacao = LocalDateTime.now();
+        calcularTotal();
+    }
+
     @PreUpdate
     public void aoAtualizar() {
         dataUltimaAtualizacao = LocalDateTime.now();
@@ -75,18 +82,27 @@ public class Pedido {
     }
 
     @PostPersist
+    public void aposPersistir() {
+        System.out.println("Após persistir Pedido.");
+    }
+
+    @PostUpdate
     public void aposAtualizar() {
-        System.out.println("Após atualizar o pedido");
-        calcularTotal();
+        System.out.println("Após atualizar Pedido.");
+    }
+
+    @PreRemove
+    public void aoRemover() {
+        System.out.println("Antes de remover Pedido.");
     }
 
     @PostRemove
     public void aposRemover() {
-        System.out.println("Após remover o pedido");
+        System.out.println("Após remover Pedido.");
     }
 
     @PostLoad
-    public void aposCarregar() {
-        System.out.println("Após carregar o pedido");
+    public void aoCarregar() {
+        System.out.println("Após carregar o Pedido.");
     }
 }
