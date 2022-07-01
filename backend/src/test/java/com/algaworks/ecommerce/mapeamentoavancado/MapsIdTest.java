@@ -4,7 +4,6 @@ import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.*;
 import com.algaworks.ecommerce.model.chavecomposta.ItemPedidoId;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
-import com.sun.javadoc.AnnotationTypeElementDoc;
 import org.junit.Assert;
 import org.junit.Test;
 
