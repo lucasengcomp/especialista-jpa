@@ -7,7 +7,6 @@ import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Produto;
 import com.algaworks.ecommerce.model.chavecomposta.ItemPedidoId;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
-import net.bytebuddy.asm.Advice;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -24,13 +23,11 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setDataCriacao(LocalDateTime.now());
         pedido.setTotal(BigDecimal.TEN);
-
         pedido.setCliente(cliente);
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);
         entityManager.getTransaction().commit();
-
         entityManager.clear();
 
         Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
@@ -50,23 +47,15 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);
 
-        entityManager.persist(pedido);
-
-        // Pode ser que logo ao executar o método "persist" o JPA já faça a sincronização com a base.
-        // Mas caso isso não aconteça, o flush garante a sincronização.
-        entityManager.flush();
-
         ItemPedido itemPedido = new ItemPedido();
-//        itemPedido.setPedidoId(pedido.getId()); IdClass
-//        itemPedido.setProdutoId(produto.getId()); IdClass
-        itemPedido.setId(new ItemPedidoId(pedido.getId(), produto.getId()));
+        itemPedido.setId(new ItemPedidoId());
         itemPedido.setPrecoProduto(produto.getPreco());
         itemPedido.setQuantidade(1);
         itemPedido.setPedido(pedido);
         itemPedido.setProduto(produto);
 
+        entityManager.persist(pedido);
         entityManager.persist(itemPedido);
-
         entityManager.getTransaction().commit();
 
         entityManager.clear();
