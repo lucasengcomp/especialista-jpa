@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.model.classespadrao.EntidadeBaseInteger;
 import com.algaworks.ecommerce.model.enums.StatusPagamento;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,15 +10,9 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "pagamento_boleto")
-public class PagamentoBoleto {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class PagamentoBoleto extends EntidadeBaseInteger {
 
     @Column(name = "pedido_id")
     private Integer pedidoId;

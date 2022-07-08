@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.listener.GenericoListener;
 import com.algaworks.ecommerce.listener.GerarNotaFiscalListener;
+import com.algaworks.ecommerce.model.classespadrao.EntidadeBaseInteger;
 import com.algaworks.ecommerce.model.embededs.Atributo;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,16 +15,10 @@ import java.util.List;
 
 @Getter
 @Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @EntityListeners({ GenericoListener.class })
 @Entity
 @Table(name = "produto")
-public class Produto {
-
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Produto extends EntidadeBaseInteger {
 
     @Column(name = "data_criacao", updatable = false)
     private LocalDateTime dataCriacao;
