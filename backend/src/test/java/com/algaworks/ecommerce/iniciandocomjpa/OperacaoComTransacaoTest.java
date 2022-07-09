@@ -105,6 +105,7 @@ public class OperacaoComTransacaoTest extends EntityManagerTest {
         Assert.assertNotNull(produtoVerficacao);
         Assert.assertEquals("Kindle paperwhite", produtoVerficacao.getNome());
     }
+
     @Test
     public void removerObjeto() {
         Produto produto = entityManager.find(Produto.class, 3);

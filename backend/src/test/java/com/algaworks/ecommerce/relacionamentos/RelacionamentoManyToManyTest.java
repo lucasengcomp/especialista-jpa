@@ -6,7 +6,6 @@ import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class RelacionamentoManyToManyTest extends EntityManagerTest {

@@ -6,7 +6,6 @@ import com.algaworks.ecommerce.model.classesabstratas.Pagamento;
 import com.algaworks.ecommerce.model.classespadrao.EntidadeBaseInteger;
 import com.algaworks.ecommerce.model.embededs.EnderecoEntregaPedido;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +28,7 @@ public class Pedido extends EntidadeBaseInteger {
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itemsPedidos;
 
-    @Column(name = "data_criacao", updatable = false)
+    @Column(name = "data_criacao", updatable = false, columnDefinition = "datetime(6)", nullable = false)
     private LocalDateTime dataCriacao;
 
     @Column(name = "data_ultima_atualizacao", insertable = false)
@@ -41,7 +40,7 @@ public class Pedido extends EntidadeBaseInteger {
     @OneToOne(mappedBy = "pedido")
     private NotaFiscal notaFiscal;
 
-    @Column(precision = 19, scale = 2, nullable = false)
+    @Column(nullable = false)
     private BigDecimal total;
 
     @Column(length = 30, nullable = false)

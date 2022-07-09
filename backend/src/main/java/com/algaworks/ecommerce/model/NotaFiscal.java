@@ -1,7 +1,6 @@
 package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.model.classespadrao.EntidadeBaseInteger;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,8 +19,9 @@ public class NotaFiscal extends EntidadeBaseInteger {
     private Pedido pedido;
 
     @Lob
+    @Column(nullable = false)
     private byte[] xml;
 
-    @Column(name = "data_emissao")
+    @Column(name = "data_emissao", columnDefinition = "datetime(6)", nullable = false)
     private Date dataEmissao;
 }

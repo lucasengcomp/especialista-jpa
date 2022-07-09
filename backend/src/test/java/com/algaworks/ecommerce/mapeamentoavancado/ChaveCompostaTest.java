@@ -1,7 +1,10 @@
 package com.algaworks.ecommerce.mapeamentoavancado;
 
 import com.algaworks.ecommerce.EntityManagerTest;
-import com.algaworks.ecommerce.model.*;
+import com.algaworks.ecommerce.model.Cliente;
+import com.algaworks.ecommerce.model.ItemPedido;
+import com.algaworks.ecommerce.model.Pedido;
+import com.algaworks.ecommerce.model.Produto;
 import com.algaworks.ecommerce.model.chavecomposta.ItemPedidoId;
 import com.algaworks.ecommerce.model.enums.StatusPedido;
 import org.junit.Assert;

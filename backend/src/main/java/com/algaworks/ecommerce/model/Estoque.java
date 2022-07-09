@@ -1,7 +1,6 @@
 package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.model.classespadrao.EntidadeBaseInteger;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 

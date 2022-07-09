@@ -1,7 +1,6 @@
 package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.model.classespadrao.EntidadeBaseInteger;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +13,7 @@ import java.util.List;
 @Table(name = "categoria")
 public class Categoria extends EntidadeBaseInteger {
 
+    @Column(length = 100, nullable = false)
     private String nome;
 
     @ManyToOne

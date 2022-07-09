@@ -1,12 +1,13 @@
 package com.algaworks.ecommerce.relacionamentos;
 
 import com.algaworks.ecommerce.EntityManagerTest;
-import com.algaworks.ecommerce.model.*;
+import com.algaworks.ecommerce.model.NotaFiscal;
+import com.algaworks.ecommerce.model.PagamentoCartao;
+import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.enums.StatusPagamento;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Date;
 
 public class RelacionamentoOneToOneTest extends EntityManagerTest {

@@ -1,14 +1,9 @@
 package com.algaworks.ecommerce.relacionamentos;
 
 import com.algaworks.ecommerce.EntityManagerTest;
-import com.algaworks.ecommerce.model.*;
-import com.algaworks.ecommerce.model.enums.StatusPedido;
+import com.algaworks.ecommerce.model.Categoria;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.math.BigDecimal;
-import java.security.UnrecoverableEntryException;
-import java.time.LocalDateTime;
 
 public class AutoRelacionamentoTest extends EntityManagerTest {
 
