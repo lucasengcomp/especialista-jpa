@@ -5,7 +5,10 @@ import com.algaworks.ecommerce.model.Pedido;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.lang.reflect.Type;
+import java.util.List;
 
 public class BasicoJPQLTest extends EntityManagerTest {
 
@@ -18,5 +21,21 @@ public class BasicoJPQLTest extends EntityManagerTest {
         Assert.assertNotNull(pedido);
 //        List<Pedido> resultList = typedQuery.getResultList();
 //        Assert.assertFalse(resultList.isEmpty());
+    }
+
+    @Test
+    public void mostrarDiferencaQueries() {
+        String jpql = "select p from Pedido p where p.id = 1";
+        TypedQuery<Pedido> typedQuery = entityManager.createQuery(jpql, Pedido.class);
+
+        Pedido pedido1 = typedQuery.getSingleResult();
+        Assert.assertNotNull(pedido1);
+
+        Query query = entityManager.createQuery(jpql);
+        Pedido pedido2 = (Pedido) query.getSingleResult();
+        Assert.assertNotNull(pedido2);
+
+//        List<Pedido> listaDePedidos = query.getResultList();
+//        Assert.assertFalse(listaDePedidos.isEmpty());
     }
 }
