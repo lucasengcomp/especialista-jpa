@@ -1,6 +1,7 @@
 package com.algaworks.ecommerce.model;
 
 import com.algaworks.ecommerce.model.classespadrao.EntidadeBaseInteger;
+import jdk.jfr.Frequency;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +19,7 @@ public class Categoria extends EntidadeBaseInteger {
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "categoria_pai_id")
+    @JoinColumn(name = "categoria_pai_id", foreignKey = @ForeignKey(name = "fk_categoria_categoriapai"))
     private Categoria categoriaPai;
 
     @OneToMany(mappedBy = "categoriaPai")
