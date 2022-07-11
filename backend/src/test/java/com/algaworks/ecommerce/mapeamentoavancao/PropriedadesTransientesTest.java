@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.mapeamentoavancado;
+package com.algaworks.ecommerce.mapeamentoavancao;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
@@ -11,6 +11,6 @@ public class PropriedadesTransientesTest extends EntityManagerTest {
     public void validarPrimeiroNome() {
         Cliente cliente = entityManager.find(Cliente.class, 1);
 
-        Assert.assertEquals("Ana", cliente.getPrimeiroNome());
+        Assert.assertEquals("Fernando", cliente.getPrimeiroNome());
     }
 }

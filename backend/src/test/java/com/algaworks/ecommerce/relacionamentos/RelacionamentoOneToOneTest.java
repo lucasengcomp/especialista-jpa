@@ -15,9 +15,9 @@ public class RelacionamentoOneToOneTest extends EntityManagerTest {
     @Test
     public void verificarRelacionamento() {
         Pedido pedido = entityManager.find(Pedido.class, 1);
-        PagamentoCartao pagamentoCartao = new PagamentoCartao();
 
-        pagamentoCartao.setNumeroCartao("123");
+        PagamentoCartao pagamentoCartao = new PagamentoCartao();
+        pagamentoCartao.setNumeroCartao("123.456.000-88");
         pagamentoCartao.setStatus(StatusPagamento.PROCESSANDO);
         pagamentoCartao.setPedido(pedido);
 
@@ -33,9 +33,9 @@ public class RelacionamentoOneToOneTest extends EntityManagerTest {
     @Test
     public void verificarRelacionamentoPedidoNotaFiscal() {
         Pedido pedido = entityManager.find(Pedido.class, 1);
-        NotaFiscal notaFiscal = new NotaFiscal();
 
-        notaFiscal.setXml("teste".getBytes());
+        NotaFiscal notaFiscal = new NotaFiscal();
+        notaFiscal.setXml("TESTE".getBytes());
         notaFiscal.setDataEmissao(new Date());
         notaFiscal.setPedido(pedido);
 

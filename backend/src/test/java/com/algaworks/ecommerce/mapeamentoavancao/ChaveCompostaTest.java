@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.mapeamentoavancado;
+package com.algaworks.ecommerce.mapeamentoavancao;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
@@ -22,23 +22,20 @@ public class ChaveCompostaTest extends EntityManagerTest {
         Produto produto = entityManager.find(Produto.class, 1);
 
         Pedido pedido = new Pedido();
+        pedido.setDataCriacao(LocalDateTime.now());
         pedido.setCliente(cliente);
         pedido.setDataCriacao(LocalDateTime.now());
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(produto.getPreco());
 
-        entityManager.persist(pedido);
-        entityManager.flush();
-
         ItemPedido itemPedido = new ItemPedido();
-//        itemPedido.setPedidoId(pedido.getId()); IdClass
-//        itemPedido.setProdutoId(produto.getId()); IdClass
-        itemPedido.setId(new ItemPedidoId(pedido.getId(), produto.getId()));
+        itemPedido.setId(new ItemPedidoId());
         itemPedido.setPedido(pedido);
         itemPedido.setProduto(produto);
         itemPedido.setPrecoProduto(produto.getPreco());
         itemPedido.setQuantidade(1);
 
+        entityManager.persist(pedido);
         entityManager.persist(itemPedido);
         entityManager.getTransaction().commit();
         entityManager.clear();
@@ -49,7 +46,7 @@ public class ChaveCompostaTest extends EntityManagerTest {
     }
 
     @Test
-    public void buscarItem() {
+    public void bucarItem() {
         ItemPedido itemPedido = entityManager.find(
                 ItemPedido.class, new ItemPedidoId(1, 1));
 

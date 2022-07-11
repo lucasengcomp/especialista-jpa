@@ -8,16 +8,16 @@ import org.junit.Test;
 public class EstrategiaChavePrimariaTest extends EntityManagerTest {
 
     @Test
-    public void testarEstrategiaAuto() {
+    public void testarEstrategiaChave() {
         Categoria categoria = new Categoria();
-        categoria.setNome("Eletrônicos");
+        categoria.setNome("Natação");
 
         entityManager.getTransaction().begin();
         entityManager.persist(categoria);
         entityManager.getTransaction().commit();
         entityManager.clear();
 
-        Categoria categoriaVerficicacao = entityManager.find(Categoria.class, categoria.getId());
-        Assert.assertNotNull(categoriaVerficicacao);
+        Categoria categoriaVerificacao = entityManager.find(Categoria.class, categoria.getId());
+        Assert.assertNotNull(categoriaVerificacao);
     }
 }

@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class MapeamentoObjetoEmbutido extends EntityManagerTest {
+public class MapeamentoObjetoEmbutidoTest extends EntityManagerTest {
 
     @Test
     public void analisarMapeamentoObjetoEmbutido() {

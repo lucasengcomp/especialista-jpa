@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.mapeamentoavancado;
+package com.algaworks.ecommerce.mapeamentoavancao;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
@@ -13,9 +13,10 @@ public class SecondaryTableTest extends EntityManagerTest {
     @Test
     public void salvarCliente() {
         Cliente cliente = new Cliente();
-        cliente.setNome("Carlos Finnoti");
+        cliente.setNome("Carlos Finotti");
+        cliente.setCpf("555.666.888-99");
         cliente.setSexoCliente(SexoCliente.MASCULINO);
-        cliente.setDataNascimento(LocalDate.of(1998, 1, 1));
+        cliente.setDataNascimento(LocalDate.of(1990, 1, 1));
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);

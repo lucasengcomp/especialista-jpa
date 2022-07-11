@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.mapeamentoavancado;
+package com.algaworks.ecommerce.mapeamentoavancao;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.*;
@@ -19,16 +19,16 @@ public class MapsIdTest extends EntityManagerTest {
         NotaFiscal notaFiscal = new NotaFiscal();
         notaFiscal.setPedido(pedido);
         notaFiscal.setDataEmissao(new Date());
-        notaFiscal.setXml("</xml>".getBytes());
+        notaFiscal.setXml("<xml/>".getBytes());
 
         entityManager.getTransaction().begin();
         entityManager.persist(notaFiscal);
         entityManager.getTransaction().commit();
         entityManager.clear();
 
-        NotaFiscal notaFiscalVerificacao = entityManager.find(NotaFiscal.class, notaFiscal.getId());
-        Assert.assertNotNull(notaFiscalVerificacao);
-        Assert.assertEquals(pedido.getId(), notaFiscalVerificacao.getId());
+        NotaFiscal notaFiscalVarificacao = entityManager.find(NotaFiscal.class, notaFiscal.getId());
+        Assert.assertNotNull(notaFiscalVarificacao);
+        Assert.assertEquals(pedido.getId(), notaFiscalVarificacao.getId());
     }
 
     @Test

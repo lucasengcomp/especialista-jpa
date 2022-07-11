@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.mapeamentoavancado;
+package com.algaworks.ecommerce.mapeamentoavancao;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
@@ -17,13 +17,13 @@ public class ElementCollectionTest extends EntityManagerTest {
         entityManager.getTransaction().begin();
 
         Produto produto = entityManager.find(Produto.class, 1);
-        produto.setTags(Arrays.asList("ebook", "livro digital", "livro fisico"));
+        produto.setTags(Arrays.asList("ebook", "livro-digital"));
 
         entityManager.getTransaction().commit();
         entityManager.clear();
 
-        Produto produtoVerificado = entityManager.find(Produto.class, produto.getId());
-        Assert.assertFalse(produtoVerificado.getTags().isEmpty());
+        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Assert.assertFalse(produtoVerificacao.getTags().isEmpty());
     }
 
     @Test
@@ -31,13 +31,13 @@ public class ElementCollectionTest extends EntityManagerTest {
         entityManager.getTransaction().begin();
 
         Produto produto = entityManager.find(Produto.class, 1);
-        produto.setAtributos(Arrays.asList(new Atributo("Tela", "320x600")));
+        produto.setAtributos(Arrays.asList(new Atributo("tela", "320x600")));
 
         entityManager.getTransaction().commit();
         entityManager.clear();
 
-        Produto produtoVerificado = entityManager.find(Produto.class, produto.getId());
-        Assert.assertFalse(produtoVerificado.getAtributos().isEmpty());
+        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Assert.assertFalse(produtoVerificacao.getAtributos().isEmpty());
     }
 
     @Test
@@ -45,12 +45,14 @@ public class ElementCollectionTest extends EntityManagerTest {
         entityManager.getTransaction().begin();
 
         Cliente cliente = entityManager.find(Cliente.class, 1);
-        cliente.setContatos(Collections.singletonMap("email", "ana@email.com"));
+        cliente.setContatos(Collections.singletonMap("email", "fernando@email.com"));
 
         entityManager.getTransaction().commit();
         entityManager.clear();
 
         Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
-        Assert.assertEquals("ana@email.com", clienteVerificacao.getContatos().get("email"));
+        Assert.assertEquals("fernando@email.com", clienteVerificacao.getContatos().get("email"));
     }
+
+
 }

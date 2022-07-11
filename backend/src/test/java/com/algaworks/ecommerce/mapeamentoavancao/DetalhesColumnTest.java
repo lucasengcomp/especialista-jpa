@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.mapeamentoavancado;
+package com.algaworks.ecommerce.mapeamentoavancao;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Produto;
@@ -38,11 +38,11 @@ public class DetalhesColumnTest extends EntityManagerTest {
         produto.setPreco(BigDecimal.TEN);
         produto.setDataCriacao(LocalDateTime.now());
         produto.setDataUltimaAtualizacao(LocalDateTime.now());
-
         entityManager.getTransaction().commit();
         entityManager.clear();
 
         Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+
         Assert.assertNotEquals(produto.getDataCriacao().truncatedTo(ChronoUnit.SECONDS),
                 produtoVerificacao.getDataCriacao().truncatedTo(ChronoUnit.SECONDS));
         Assert.assertEquals(produto.getDataUltimaAtualizacao().truncatedTo(ChronoUnit.SECONDS),

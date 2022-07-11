@@ -17,7 +17,6 @@ public class RemovendoEntidadesReferenciadasTest extends EntityManagerTest {
         pedido.getItemsPedidos().forEach(i -> entityManager.remove(i));
         entityManager.remove(pedido);
         entityManager.getTransaction().commit();
-
         entityManager.clear();
 
         Pedido pedidoVerificacao = entityManager.find(Pedido.class, 1);

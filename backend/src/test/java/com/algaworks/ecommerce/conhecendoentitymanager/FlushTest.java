@@ -6,6 +6,7 @@ import com.algaworks.ecommerce.model.enums.StatusPedido;
 import org.junit.Test;
 
 public class FlushTest extends EntityManagerTest {
+
     @Test(expected = Exception.class)
     public void chamarFlush() {
         try {
@@ -13,7 +14,6 @@ public class FlushTest extends EntityManagerTest {
 
             Pedido pedido = entityManager.find(Pedido.class, 1);
             pedido.setStatus(StatusPedido.PAGO);
-
             entityManager.flush();
 
             if (pedido.getPagamento() == null) {

@@ -9,9 +9,11 @@ public class CachePrimeiroNivelTest extends EntityManagerTest {
     @Test
     public void verificarCache() {
         Produto produto = entityManager.find(Produto.class, 1);
+        System.out.println(produto.getNome());
+        System.out.println("------------------------------");
 
-        System.out.printf(produto.getNome());
-        System.out.printf("--------------------");
+//        entityManager.close();
+//        entityManager = entityManagerFactory.createEntityManager();
 
         Produto produtoResgatado = entityManager.find(Produto.class, produto.getId());
         System.out.println(produtoResgatado.getNome());
