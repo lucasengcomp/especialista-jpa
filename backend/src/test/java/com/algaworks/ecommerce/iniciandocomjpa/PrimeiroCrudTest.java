@@ -15,7 +15,7 @@ public class PrimeiroCrudTest extends EntityManagerTest {
 
 //        cliente.setId(3);
         cliente.setNome("José Lucas");
-        cliente.setSexoCliente(SexoCliente.MASCULINO);
+        cliente.setSexo(SexoCliente.MASCULINO);
         cliente.setCpf("333.444.500-66");
 
         entityManager.getTransaction().begin();
@@ -42,7 +42,7 @@ public class PrimeiroCrudTest extends EntityManagerTest {
         cliente.setId(1);
         cliente.setNome("Fernando Medeiros Silva");
         cliente.setCpf("000.111.222-33");
-        cliente.setSexoCliente(SexoCliente.MASCULINO);
+        cliente.setSexo(SexoCliente.MASCULINO);
 
         entityManager.getTransaction().begin();
         entityManager.merge(cliente);

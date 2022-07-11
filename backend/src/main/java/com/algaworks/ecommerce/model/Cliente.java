@@ -41,7 +41,7 @@ public class Cliente extends EntidadeBaseInteger {
 
     @Column(table = "cliente_detalhe", length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
-    private SexoCliente sexoCliente;
+    private SexoCliente sexo;
 
     @Column(name = "data_nascimento", table = "cliente_detalhe")
     private LocalDate dataNascimento;

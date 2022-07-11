@@ -15,7 +15,7 @@ public class SecondaryTableTest extends EntityManagerTest {
         Cliente cliente = new Cliente();
         cliente.setNome("Carlos Finotti");
         cliente.setCpf("555.666.888-99");
-        cliente.setSexoCliente(SexoCliente.MASCULINO);
+        cliente.setSexo(SexoCliente.MASCULINO);
         cliente.setDataNascimento(LocalDate.of(1990, 1, 1));
 
         entityManager.getTransaction().begin();
@@ -24,6 +24,6 @@ public class SecondaryTableTest extends EntityManagerTest {
         entityManager.clear();
 
         Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
-        Assert.assertNotNull(clienteVerificacao.getSexoCliente());
+        Assert.assertNotNull(clienteVerificacao.getSexo());
     }
 }
