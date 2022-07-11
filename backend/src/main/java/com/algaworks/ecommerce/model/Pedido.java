@@ -25,7 +25,7 @@ public class Pedido extends EntidadeBaseInteger {
     @JoinColumn(name = "cliente_id", nullable = false, foreignKey = @ForeignKey(name = "fk_pedido_cliente"))
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
 
     @Column(name = "data_criacao", updatable = false, columnDefinition = "datetime(6)", nullable = false)
@@ -61,8 +61,10 @@ public class Pedido extends EntidadeBaseInteger {
     //@PreUpdate
     public void calcularTotal() {
         if (itens != null) {
-            total = itens.stream().map(ItemPedido::getPrecoProduto)
+            total = itens.stream().map(i -> new BigDecimal(i.getQuantidade()).multiply(i.getPrecoProduto()))
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
+        } else {
+            total = BigDecimal.ZERO;
         }
     }
 
