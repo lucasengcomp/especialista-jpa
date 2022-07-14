@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.jpql;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Pedido;
+import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,6 +12,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class ExpressoesCondicionaisTest extends EntityManagerTest {
+
+    @Test
+    public void usarExpressaoDiferente() {
+        String jpql = "SELECT p FROM Produto p " +
+                "WHERE p.preco <> 100";
+
+        TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
+        List<Produto> lista = typedQuery.getResultList();
+
+        Assert.assertFalse(lista.isEmpty());
+    }
 
     @Test
     public void usarBetweenComData() {
